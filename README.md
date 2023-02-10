@@ -2,7 +2,66 @@
 
 This Outlook add-in adds a randomly generated Jitsi link to an appointment (while in the appointment creation window). It was built based on the Yeoman generator, as described in the this [guide](https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/outlook-quickstart?tabs=yeomangenerator).
 
-![Example image of the generated Jitsi signature](screenshot.png "Example image of the generated Jitsi signature")
+![Photo: Jitsi Outlook plugin example / HaV / CC0](screenshot.png)
+<figcaption>Jitsi Outlook plugin example / HaV / CC0</figcaption>
+
+---
+
+## Table of Contents
+
+- [Installation and Requirements](#installation-and-requirements)
+- [Known Issues](#known-issues)
+- [Contributing](#contributing)
+- [Development](#development)
+- [License](#license)
+- [Maintainers](#maintainers)
+
+
+## Installation and Requirements
+
+### **Publishing the add-in**
+
+See [Development](#development) for how you can run and test the project locally.
+
+This project does not provide a hosting or publishing recommendation, that is entirely up to the individual(s) using it. Microsoft provides a comprehensive publishing guide and provides different options in the following [link](https://learn.microsoft.com/en-us/office/dev/add-ins/publish/publish).
+
+## Known issues
+
+This project is a stripped down version with basic functionality. There are ideas and possible plans for the future.
+
+## Contributing
+
+Please see the [CONTRIBUTING](CONTRIBUTING.adoc) guide.
+
+## Development
+
+## **Installing the add-in on your Outlook**
+
+For development, The add-in needs to be added to the relevant Outlook environment. The methods to do this are described in this section.
+
+### **Adding the add-in to the Outlook taskbar**
+
+The `manifest.xml` can be added as an add-in manually, through Outlooks add-in portal:
+
+1. Open Outlook
+2. Click the "..." button on the toolbar
+3. Select "Get Add-ins"
+4. Click on the "My add-ins" alternative on the left side menu
+5. Click on the "Add a custom add-in" dropdown in the bottom section
+6. Select the relevant alternative for where your manifest file is stored
+7. Add the `manifest.xml` file and let it validate and load
+
+When it has finished loading the add-in should be visible in the toolbar whenever you have the event organizer window open. I.e. when you are trying to organize and invite people to meeting.
+
+### **Running the development server locally**
+
+You can run and test the add-in code by running the following npm command:
+
+```
+npm run dev-server
+```
+
+This will start the local development server on port 3000. If the aforementioned `manifest.xml` variables have been set to your local machine you will be able to run the add-in locally.
 
 ## **Configuration**
 
@@ -47,34 +106,15 @@ Thereafter, all the dependencies need to be installed:
 npm install
 ```
 
-## **Installing the add-in on your Outlook**
+----
 
-The add-in needs to be added to the relevant Outlook environment. The methods to do this are described in this section.
+## License
 
-### **Adding the add-in to the Outlook tasbar**
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-The `manifest.xml` can be added as an add-in manually, through Outlooks add-in portal:
 
-1. Open Outlook
-2. Click the "..." button on the toolbar
-3. Select "Get Add-ins"
-4. Click on the "My add-ins" alternative on the left side menu
-5. Click on the "Add a custom add-in" dropdown in the bottom section
-6. Select the relevant alternative for where your manifest file is stored
-7. Add the `manifest.xml` file and let it validate and load
+----
 
-When it has finished loading the add-in should be visible in the toolbar whenever you have the event organizer window open. I.e. when you are trying to organize and invite people to meeting.
+## Maintainers
 
-### **Running the development server locally**
-
-You can run and test the add-in code by running the following npm command:
-
-```
-npm run dev-server
-```
-
-This will start the local development server on port 3000. If the aforementioned `manifest.xml` variables have been set to your local machine you will be able to run the add-in locally.
-
-### **Publishing the add-in**
-
-This project does not provide a hosting or publishing recommendation, this is entirely up to the individual(s) using it. Microsoft provides a comprehensive publishing guide and provides different options in the following [link](https://learn.microsoft.com/en-us/office/dev/add-ins/publish/publish).
+[The maintainer/s](INSERT_MAINTAINTERS_HERE)  
