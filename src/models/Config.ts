@@ -1,4 +1,4 @@
-export const defaultMeetJitsiUrl = "https://meet.jit.si///";
+export const defaultMeetJitsiUrl = "https://meet.jit.si/";
 
 interface Config {
   baseUrl?: string;
