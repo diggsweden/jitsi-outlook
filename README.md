@@ -1,5 +1,7 @@
 # **Jitsi Outlook add-in**
 
+[![Unit Tests](https://github.com/diggsweden/jitsi-outlook/actions/workflows/webpack.yml/badge.svg)](https://github.com/diggsweden/jitsi-outlook/actions/workflows/webpack.yml)
+
 This Outlook add-in adds a randomly generated Jitsi link to an appointment (while in the appointment creation window). It was built based on the Yeoman generator, as described in the this [guide](https://learn.microsoft.com/en-us/office/dev/add-ins/quickstarts/outlook-quickstart?tabs=yeomangenerator).
 
 ![Photo: Jitsi Outlook plugin example / HaV / CC0](screenshot.png)
@@ -7,8 +9,6 @@ This Outlook add-in adds a randomly generated Jitsi link to an appointment (whil
 <figcaption>Jitsi Outlook plugin example / HaV / CC0</figcaption>
 
 ---
-
-[![Unit Tests](https://github.com/diggsweden/jitsi-outlook/actions/workflows/webpack.yml/badge.svg)](https://github.com/diggsweden/jitsi-outlook/actions/workflows/webpack.yml)
 
 ## Table of Contents
 
