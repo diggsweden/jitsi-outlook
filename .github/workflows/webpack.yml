@@ -2,7 +2,7 @@ name: Build and Test
 
 on:
   push:
-    branches: ["main", "*"]
+    branches: ["main", "bug/1-does-not-work-web"]
   pull_request:
     branches: ["main"]
 
