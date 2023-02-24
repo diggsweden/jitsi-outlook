@@ -6,10 +6,16 @@ export const combineBodyWithJitsiDiv = (body: string, config: Config): string =>
   const jitsiUrl = getJitsiUrl(config);
 
   const linkDOM = getJitsiLinkDiv(jitsiUrl, config);
-  return `
-      ${body}
-      ${linkDOM}
-      `;
+  const parser = new DOMParser();
+
+  const bodyString = `
+        ${body}
+        ${linkDOM}
+    `;
+
+  const combinedDOM = parser.parseFromString(bodyString, "text/html");
+
+  return combinedDOM.body.innerHTML;
 };
 
 export const bodyHasJitsiLink = (body: string, config: Config): boolean => {
@@ -17,18 +23,14 @@ export const bodyHasJitsiLink = (body: string, config: Config): boolean => {
   return body.includes(baseUrl);
 };
 
-export const overwriteJitsiLinkDiv = (body: string, config: Config): string => {
+export const overwriteJitsiLinkDiv = (body: Document, config: Config): string => {
   const jitsiUrl = getJitsiUrl(config);
 
-  const parser = new DOMParser();
-  const htmlDoc = parser.parseFromString(body, "text/html");
-
-  const jitsiLink = htmlDoc.querySelector("[id*='jitsi-link']");
-  console.log("jitsiLinkById", jitsiLink);
+  const jitsiLink = body.querySelector("[id*='jitsi-link']");
   const newJitsiLink = getJitsiLinkDiv(jitsiUrl, config);
   jitsiLink.outerHTML = newJitsiLink;
 
-  const updatedHtmlString = htmlDoc.body.innerHTML;
+  const updatedHtmlString = body.body.innerHTML;
   return updatedHtmlString;
 };
 

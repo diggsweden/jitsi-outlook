@@ -12,12 +12,16 @@ Office.initialize = function () {};
 
 const addJitsiLink = (event: Office.AddinCommands.Event) => {
   const config = configJson as Config;
+  console.log("here");
 
   Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
+    console.log("getAsync", result);
     if (result.error) {
       event.completed();
     }
-    const bodyDOM = bodyHasJitsiLink(result.value, config) ? overwriteJitsiLinkDiv(result.value, config) : combineBodyWithJitsiDiv(result.value, config);
+    const parser = new DOMParser();
+    const htmlDoc = parser.parseFromString(result.value, "text/html");
+    const bodyDOM = bodyHasJitsiLink(result.value, config) ? overwriteJitsiLinkDiv(htmlDoc, config) : combineBodyWithJitsiDiv(result.value, config);
 
     Office.context.mailbox.item.body.setAsync(
       bodyDOM,

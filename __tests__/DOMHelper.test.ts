@@ -1,6 +1,6 @@
 import getLocalizedStrings from "../src/localization";
 import Config from "../src/models/Config";
-import { bodyHasJitsiLink, getJitsiLinkDiv } from "../src/utils/DOMHelper";
+import { bodyHasJitsiLink, getJitsiLinkDiv, overwriteJitsiLinkDiv } from "../src/utils/DOMHelper";
 import { getJitsiUrl } from "../src/utils/URLHelper";
 
 describe("getJitsiLinkDOM", () => {
