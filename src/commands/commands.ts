@@ -10,28 +10,35 @@ import { bodyHasJitsiLink, combineBodyWithJitsiDiv, overwriteJitsiLinkDiv } from
 
 Office.initialize = function () {};
 
+const setData = (str: string, event: Office.AddinCommands.Event) => {
+  Office.context.mailbox.item.body.setAsync(
+    str,
+    {
+      coercionType: Office.CoercionType.Html,
+    },
+    () => {
+      event.completed();
+    }
+  );
+};
+
 const addJitsiLink = (event: Office.AddinCommands.Event) => {
   const config = configJson as Config;
-  console.log("here");
 
   Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
-    console.log("getAsync", result);
     if (result.error) {
       event.completed();
     }
-    const parser = new DOMParser();
-    const htmlDoc = parser.parseFromString(result.value, "text/html");
-    const bodyDOM = bodyHasJitsiLink(result.value, config) ? overwriteJitsiLinkDiv(htmlDoc, config) : combineBodyWithJitsiDiv(result.value, config);
 
-    Office.context.mailbox.item.body.setAsync(
-      bodyDOM,
-      {
-        coercionType: Office.CoercionType.Html,
-      },
-      () => {
-        event.completed();
-      }
-    );
+    try {
+      const parser = new DOMParser();
+      const htmlDoc = parser.parseFromString(result.value, "text/html");
+      const bodyDOM = bodyHasJitsiLink(result.value, config) ? overwriteJitsiLinkDiv(htmlDoc, config) : combineBodyWithJitsiDiv(result.value, config);
+      setData(bodyDOM, event);
+    } catch (error) {
+      // If it fails to manipulate the DOM with a new link it will fallback to its original state
+      setData(result.value, event);
+    }
   });
 };
 

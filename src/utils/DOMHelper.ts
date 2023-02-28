@@ -2,6 +2,8 @@ import getLocalizedStrings from "../localization";
 import Config, { defaultMeetJitsiUrl } from "../models/Config";
 import { getJitsiUrl } from "./URLHelper";
 
+const DIV_ID_JITSI = "jitsi-link";
+
 export const combineBodyWithJitsiDiv = (body: string, config: Config): string => {
   const jitsiUrl = getJitsiUrl(config);
 
@@ -26,7 +28,7 @@ export const bodyHasJitsiLink = (body: string, config: Config): boolean => {
 export const overwriteJitsiLinkDiv = (body: Document, config: Config): string => {
   const jitsiUrl = getJitsiUrl(config);
 
-  const jitsiLink = body.querySelector("[id*='jitsi-link']");
+  const jitsiLink = body.querySelector(`[id*="${DIV_ID_JITSI}"]`);
   const newJitsiLink = getJitsiLinkDiv(jitsiUrl, config);
   jitsiLink.outerHTML = newJitsiLink;
 
@@ -38,7 +40,7 @@ export const getJitsiLinkDiv = (jitsiUrl: string, config: Config): string => {
   const localizedStrings = getLocalizedStrings();
 
   return `
-    <div id="jitsi-link">
+    <div id="${DIV_ID_JITSI}">
         <hr style="margin-bottom: 8px;"/>
         <a aria-label="${localizedStrings.linkToMeeting}" title="${localizedStrings.linkToMeeting}" style="font-size: 1.5em;" href="${jitsiUrl}">
             ${localizedStrings.connectToMeeting}
