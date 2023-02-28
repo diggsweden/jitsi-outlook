@@ -10,7 +10,7 @@ describe("getRandomRoomName", () => {
 
 describe("getConfigUrl", () => {
   it("should return an empty string if config.meetingUrl is not provided", () => {
-    const config = {};
+    const config: Config = {};
     const configUrl = getConfigUrl(config);
     expect(configUrl).toBe("");
   });
@@ -29,13 +29,13 @@ describe("getConfigUrl", () => {
 
 describe("getJitsiUrl", () => {
   it("should use defaultMeetJitsiUrl if config.baseUrl is not provided", () => {
-    const config = {};
+    const config: Config = {};
     const jitsiUrl = getJitsiUrl(config);
     expect(jitsiUrl).toContain(defaultMeetJitsiUrl);
   });
 
   it("should use config.baseUrl if provided", () => {
-    const config = {
+    const config: Config = {
       baseUrl: "https://my-custom-base-url.com/",
     };
     const jitsiUrl = getJitsiUrl(config);
