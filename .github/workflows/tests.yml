@@ -2,7 +2,7 @@ name: Unit Tests
 
 on:
   push:
-    branches: ["main", "bug/1-does-not-work-web"]
+    branches: ["main"]
   pull_request:
     branches: ["main"]
 
