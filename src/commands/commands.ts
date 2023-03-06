@@ -1,6 +1,6 @@
 import configJson from "../../config.json";
-import getLocalizedStrings from "../localization";
-import Config, { defaultMeetJitsiUrl } from "../models/Config";
+import Config from "../models/Config";
+import { bodyHasJitsiLink, combineBodyWithJitsiDiv, overwriteJitsiLinkDiv } from "../utils/DOMHelper";
 /*
  * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
  * See LICENSE in the project root for license information.
@@ -10,65 +10,36 @@ import Config, { defaultMeetJitsiUrl } from "../models/Config";
 
 Office.initialize = function () {};
 
-const getRandomRoomName = (): string => {
-  var randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  var result = "";
-  for (var i = 0; i < 16; i++) {
-    result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-  }
-  return window.btoa(result);
+const setData = (str: string, event: Office.AddinCommands.Event) => {
+  Office.context.mailbox.item.body.setAsync(
+    str,
+    {
+      coercionType: Office.CoercionType.Html,
+    },
+    () => {
+      event.completed();
+    }
+  );
 };
 
-const getConfigUrl = (config: Config) => {
-  if (!config.meetingUrl) {
-    return "";
-  }
-
-  var keys = Object.keys(config.meetingUrl);
-  const url = keys.reduce((acc, currentValue) => {
-    return acc + `config.${currentValue}=${config.meetingUrl[currentValue]}&`;
-  }, "#");
-
-  return url;
-};
-
-const getJitsiLinkDOM = (config: Config): string => {
-  const jitsiUrl = (config.baseUrl ?? defaultMeetJitsiUrl) + getRandomRoomName() + getConfigUrl(config);
-  const localizedStrings = getLocalizedStrings();
-
-  return `
-    <div>
-        <hr style="margin-bottom: 8px;"/>
-        <a aria-label="${localizedStrings.linkToMeeting}" title="${localizedStrings.linkToMeeting}" style="font-size: 1.5em;" href="${jitsiUrl}">
-            ${localizedStrings.connectToMeeting}
-        </a>
-        <br />
-        <span>
-            ${localizedStrings.orCopyLink}
-        </span> 
-        <a aria-label="${localizedStrings.copyableLinkToMeeting}" title="${localizedStrings.copyableLinkToMeeting}" href="${jitsiUrl}">
-            ${jitsiUrl}
-        </a>
-        ${
-          config.additionalText
-            ? `
-            <br />
-            <span style="font-size: 0.8em; font-style: italic;">
-                ${config.additionalText}
-            </span>
-            `
-            : ""
-        }
-    </div>
-  `;
-};
-
-const insertJitsiLink = (event: Office.AddinCommands.Event) => {
+const addJitsiLink = (event: Office.AddinCommands.Event) => {
   const config = configJson as Config;
-  const linkDOM = getJitsiLinkDOM(config);
 
-  Office.context.mailbox.item.body.setSignatureAsync(linkDOM);
-  event.completed();
+  Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
+    if (result.error) {
+      event.completed();
+    }
+
+    try {
+      const parser = new DOMParser();
+      const htmlDoc = parser.parseFromString(result.value, "text/html");
+      const bodyDOM = bodyHasJitsiLink(result.value, config) ? overwriteJitsiLinkDiv(htmlDoc, config) : combineBodyWithJitsiDiv(result.value, config);
+      setData(bodyDOM, event);
+    } catch (error) {
+      // If it fails to manipulate the DOM with a new link it will fallback to its original state
+      setData(result.value, event);
+    }
+  });
 };
 
-Office.actions.associate("insertJitsiLink", insertJitsiLink);
+Office.actions.associate("insertJitsiLink", addJitsiLink);

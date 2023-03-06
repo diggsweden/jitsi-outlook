@@ -6,7 +6,7 @@ interface LocalizedStrings {
 }
 
 const getLocalizedStrings = (): LocalizedStrings => {
-  const myLanguage = Office.context.displayLanguage;
+  const myLanguage = typeof Office !== "undefined" ? Office.context.displayLanguage : "en";
 
   if (myLanguage.includes("sv")) {
     return {
