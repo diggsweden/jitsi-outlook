@@ -40,18 +40,25 @@ export const getJitsiLinkDiv = (jitsiUrl: string, config: Config): string => {
   const localizedStrings = getLocalizedStrings();
 
   return `
-    <div id="${DIV_ID_JITSI}">
-        <hr style="margin-bottom: 8px;"/>
-        <a aria-label="${localizedStrings.linkToMeeting}" title="${localizedStrings.linkToMeeting}" style="font-size: 1.5em;" href="${jitsiUrl}">
+    <div id="${DIV_ID_JITSI}" style="font-family: 'Arial';">
+        <span style="font-size: 1.2em; font-weight: 700;">
             ${localizedStrings.connectToMeeting}
-        </a>
+        </span>
+        <table style="border-collapse: collapse;">
+            <tr>
+                <td>
+                    <a
+                        aria-label="${localizedStrings.linkToMeeting}" 
+                        title="${localizedStrings.linkToMeeting}" 
+                        alt=${localizedStrings.linkToMeeting} 
+                        style="font-size: 0.8em;" 
+                        href="${jitsiUrl}">
+                        ${jitsiUrl}
+                    </a>
+                </td>
+            </tr>
+        </table>
         <br />
-        <span>
-            ${localizedStrings.orCopyLink}
-        </span> 
-        <a aria-label="${localizedStrings.copyableLinkToMeeting}" title="${localizedStrings.copyableLinkToMeeting}" href="${jitsiUrl}">
-            ${jitsiUrl}
-        </a>
         ${
           config.additionalText
             ? `
