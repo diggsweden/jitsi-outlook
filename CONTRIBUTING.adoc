@@ -16,7 +16,7 @@ As a new contributor, you are in an excellent position to give us feedback to ou
 * Report/fix problems found during installing or developer environments.
 * Add suggestions for something else that is missing. 
 
-[[community-guideline]]
+[[community-guidelines]]
 == Community Guildeline
 
 Be nice and respectful to each other.
@@ -50,8 +50,9 @@ Great, however, there are some practical points to check to make sure that every
 * It is always best to discuss your plans beforehand, to ensure that your contribution is in line with our goals.
 * Check the list of open Issues. Either assign an existing issue to yourself, or create a new one that you would like to work on, and discuss your ideas and use cases.
 * Follow the projects' convention and style regarding test, code and documentation, commit style etc.
+* Follow the link:#ux-guidelines[UX guidelines].
 * The project can decide to decline a contribution not following the general project guidelines, or deemed to not fit into the general project goal/architecture.
-* Make sure you have an understanding of the link:#pull-request[Pull Request Lifecycle]
+* Make sure you have an understanding of the link:#pull-request[Pull Request Lifecycle].
 * You agree to that in general, all contributions to this project will be released under the **inbound=outbound** norm, that is,
  they are submitted under the same terms as the project licenses. In a more formal way - 'Unless You explicitly state otherwise, any Contribution intentionally submitted for inclusion in the Work by You to the Licensor shall be under the terms and conditions of the projects License, without any additional terms or conditions.'
 * link:#signoff-and-signing-a-commit[Sign your commits].
@@ -65,13 +66,17 @@ This workflow is common, maybe even expected if nothing else mentioned, and is c
 
 A practical example of such a workflow could be:
 
-1 Fork the repository.
-2 Create a topic branch from your forks main/master branch, i.e. myfeaturebranch
-3 Push your changes to the topic branch (in your fork) of the repository, i.e myfeaturebranch.
-4 Open a new pull request to main project.
-5 Project maintainers might comment and give feedback on your Pull Request.
+1. Fork the repository.
+2. Create a topic branch from your forks main/master branch, i.e. myfeaturebranch
+    - When creating a branch related to an existing issue, it's recommended to follow a naming convention that includes the type of issue and the corresponding issue number. This can be achieved by using the format `{type}/{issue number}-descriptive-title``, such as `enhancement/1-create-link` for an enhancement issue with number 1. This naming convention helps to clearly associate the branch with the correct issue and allows for easier tracking of progress.
+3. Push your changes to the topic branch (in your fork) of the repository, i.e `enhancement/10-my-feature-branch`.
+4. Create the relevant tests. See the link:#testing-guidelines[Testing Guidelines].
+5. Open a new pull request to main project.
+6. Verify that all tests are passing.
+7. Project maintainers might comment and give feedback on your Pull Request.
+8. Approved PRs are merged, and the branch is deleted.
 
-[[commit-guideline]]
+[[commit-guidelines]]
 == Commit Guidelines
 
 === DCO - Signoff and Signing a Commit
@@ -112,15 +117,46 @@ It requires that you have a GPG keypair set up, see https://docs.github.com/en/g
 Aim for a clear human readable commit history:
 
 * **_Does the project have a defined commit message practice, please follow that_**. 
+* When making a commit related to an issue, it's recommended to include the issue number in the commit message for easy traceability. The format of the commit message can be `#{issue number}: Commit message`, such as `#10: Added test for string concatenation`. By following this convention, it will be easier to track the changes made to a specific issue, especially when the branch is merged. Note that the # is required in order to create the link between the commit message and issue.
 * Make sure you link:#dco-signoff-and-signing-a-commitsign-off[Sign-Off] your commits.
 * In general
     ** Make commits of logical units.
     ** Your commit messages should tell a human reader what will it do when the commit is applied.
-    ** If the project does not have standard for commits, you might want to consider https://www.conventionalcommits.org[Conventional Commit standard].
-    ** Make your commit message/s easily human readable in a expected way: +
+    ** Make your commit message/s easily human readable in an expected way: +
         *** A Conventional Commit example: +
-        _fix: add a null pointer check to MyMethod parameter_ +
+        _#10: add a null pointer check to MyMethod parameter_ +
         Would be read as 'When this fix is applied it will add a null pointer check to MyMethod parameter'
+
+[[testing-guidelines]]
+== Testing Guidelines
+Testing is an important part of the software development process, and should be done throughout the development cycle to ensure that your application works as intended on different platforms and environments.
+
+=== Unit Testing
+* Write Unit Tests that, preferrably, verify the behavior of small, isolated parts of your code.
+* Use a testing framework that is appropriate for your programming language and environment. In the case of this project, we use https://jestjs.io[Jest].
+
+=== Manual Testing
+
+* Conduct Manual Testing on PC, MacOS, and Web: Manual testing involves manually executing your application and verifying its behavior.
+* Make sure that the project works on the intended version of Outlook. The add-in should work on Outlook 2016 and later.
+
+[[ux-guidelines]]
+== UX Guidelines
+It is important to ensure that the add-in remains easy to use for everyone, regardless of their technical proficiency. Therefore, the number of clicks required to achieve the intended outcome should not increase when new code is added to the project, except for essential changes that may require an increase in the number of clicks.
+
+=== Accessibility Guidelines
+
+
+[[license-guidelines]]
+== License Guidelines
+* The repository uses the MIT license. This means that anyone can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software without restriction, provided that the original copyright notice and license are included.
+* Any imported libraries should also have licenses that are compatible with the MIT license. Avoid using libraries that have "bad" licenses, such as those that are restrictive, viral, or incompatible with other licenses.
+
+[[asset-guidelines]]
+== Assets Guidelines
+* Only use assets (such as images, audio files, video clips, etc.) that are licensed under a permissive license, such as Creative Commons, or that are in the public domain. This ensures that you have the right to use the assets without infringing on anyone's copyright.
+* Always check the terms of the license before using an asset. Make sure that you are following any requirements or restrictions that are specified in the license.
+* If you are not sure about the licensing terms of an asset, do not use it. It is better to err on the side of caution and avoid potential legal issues.
 
 [[security]]
 == Reporting security issues
