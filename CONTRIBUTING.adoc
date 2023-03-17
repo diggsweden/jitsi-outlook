@@ -51,6 +51,7 @@ Great, however, there are some practical points to check to make sure that every
 * Check the list of open Issues. Either assign an existing issue to yourself, or create a new one that you would like to work on, and discuss your ideas and use cases.
 * Follow the projects' convention and style regarding test, code and documentation, commit style etc.
 * Follow the link:#ux-guidelines[UX guidelines].
+* Follow the link:#accessibility-guidelines[Accessibility guidelines].
 * The project can decide to decline a contribution not following the general project guidelines, or deemed to not fit into the general project goal/architecture.
 * Make sure you have an understanding of the link:#pull-request[Pull Request Lifecycle].
 * You agree to that in general, all contributions to this project will be released under the **inbound=outbound** norm, that is,
@@ -144,13 +145,15 @@ Testing is an important part of the software development process, and should be 
 == UX Guidelines
 It is important to ensure that the add-in remains easy to use for everyone, regardless of their technical proficiency. Therefore, the number of clicks required to achieve the intended outcome should not increase when new code is added to the project, except for essential changes that may require an increase in the number of clicks.
 
+[[accessibility-guidelines]]
 === Accessibility Guidelines
+In order to ensure that anyone can use the add-in, it is important that all generated markup adheres to (or does not conflict with) the EN301549 accessibility guidelines.
 
 
 [[license-guidelines]]
 == License Guidelines
 * The repository uses the MIT license. This means that anyone can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software without restriction, provided that the original copyright notice and license are included.
-* Any imported libraries should also have licenses that are compatible with the MIT license. Avoid using libraries that have "bad" licenses, such as those that are restrictive, viral, or incompatible with other licenses.
+* Any imported libraries should also have licenses that are compatible with the MIT license.
 
 [[asset-guidelines]]
 == Assets Guidelines
