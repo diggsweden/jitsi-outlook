@@ -41,17 +41,25 @@ export const getJitsiLinkDiv = (jitsiUrl: string, config: Config): string => {
 
   return `
     <div id="${DIV_ID_JITSI}" style="font-family: 'Arial';">
-        <span style="font-size: 1.2em; font-weight: 700;">
+        <span style="font-size: 14px; font-weight: 700;">
             ${localizedStrings.connectToMeeting}
         </span>
-        <table style="border-collapse: collapse;">
+        <table style="border-collapse: collapse; margin-top: 6px;">
             <tr>
-                <td>
+                <td style="padding-right: 10px; vertical-align: middle;">
+                    <img
+                        style="vertical-align: middle;"
+                        width="18"
+                        height="18"
+                        src="https://localhost:3000/assets/video-camera.png" 
+                    />
+                </td>
+                <td style="padding-right: 10px; vertical-align: middle;">
                     <a
                         aria-label="${localizedStrings.linkToMeeting}" 
                         title="${localizedStrings.linkToMeeting}" 
                         alt=${localizedStrings.linkToMeeting} 
-                        style="font-size: 0.8em;" 
+                        style="font-size: 12px;" 
                         href="${jitsiUrl}">
                         ${jitsiUrl}
                     </a>
