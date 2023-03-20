@@ -1,5 +1,6 @@
 import getLocalizedStrings from "../localization";
 import Config, { defaultMeetJitsiUrl } from "../models/Config";
+import { videoCameraURI } from "./IconHelper";
 import { getJitsiUrl } from "./URLHelper";
 
 const DIV_ID_JITSI = "jitsi-link";
@@ -51,7 +52,7 @@ export const getJitsiLinkDiv = (jitsiUrl: string, config: Config): string => {
                         style="vertical-align: middle;"
                         width="18"
                         height="18"
-                        src="https://localhost:3000/assets/video-camera.png" 
+                        src=${videoCameraURI}
                     />
                 </td>
                 <td style="padding-right: 10px; vertical-align: middle;">
