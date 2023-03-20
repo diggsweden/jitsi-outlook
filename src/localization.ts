@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Havs- och vattenmyndigheten
+//
+// SPDX-License-Identifier: MIT
+
 interface LocalizedStrings {
   connectToMeeting: string;
   copyableLinkToMeeting: string;

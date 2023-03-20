@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Havs- och vattenmyndigheten
+//
+// SPDX-License-Identifier: MIT
+
 export const defaultMeetJitsiUrl = "https://meet.jit.si/";
 
 interface Config {

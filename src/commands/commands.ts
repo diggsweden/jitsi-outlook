@@ -1,10 +1,10 @@
+// SPDX-FileCopyrightText: Microsoft Corporation
+//
+// SPDX-License-Identifier: MIT
+
 import configJson from "../../config.json";
 import Config from "../models/Config";
 import { bodyHasJitsiLink, combineBodyWithJitsiDiv, overwriteJitsiLinkDiv } from "../utils/DOMHelper";
-/*
- * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
- * See LICENSE in the project root for license information.
- */
 
 /* global global, Office, self, window */
 

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Havs- och vattenmyndigheten
+//
+// SPDX-License-Identifier: MIT
+
 import Config, { defaultMeetJitsiUrl } from "../models/Config";
 
 export const getRandomRoomName = (): string => {

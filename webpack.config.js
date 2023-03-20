@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Havs- och vattenmyndigheten
+//
+// SPDX-License-Identifier: MIT
+
 /* eslint-disable no-undef */
 
 const devCerts = require("office-addin-dev-certs");
