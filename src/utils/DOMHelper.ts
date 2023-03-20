@@ -40,14 +40,16 @@ export const overwriteJitsiLinkDiv = (body: Document, config: Config): string =>
 export const getJitsiLinkDiv = (jitsiUrl: string, config: Config): string => {
   const localizedStrings = getLocalizedStrings();
 
+  const tdStyles = "padding-right: 10px; vertical-align: middle; background-color: transparent;";
+
   return `
     <div id="${DIV_ID_JITSI}" style="font-family: 'Arial';">
         <span style="font-size: 14px; font-weight: 700;">
             ${localizedStrings.connectToMeeting}
         </span>
-        <table style="border-collapse: collapse; margin-top: 6px;">
+        <table style="border-collapse: collapse; margin-top: 6px; background-color: transparent;">
             <tr>
-                <td style="padding-right: 10px; vertical-align: middle;">
+                <td style="${tdStyles}">
                     <img
                         style="vertical-align: middle;"
                         width="18"
@@ -55,7 +57,7 @@ export const getJitsiLinkDiv = (jitsiUrl: string, config: Config): string => {
                         src=${videoCameraURI}
                     />
                 </td>
-                <td style="padding-right: 10px; vertical-align: middle;">
+                <td style="${tdStyles}">
                     <a
                         aria-label="${localizedStrings.linkToMeeting}" 
                         title="${localizedStrings.linkToMeeting}" 
