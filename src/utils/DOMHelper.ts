@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Havs- och vattenmyndigheten
+//
+// SPDX-License-Identifier: MIT
+
 import getLocalizedStrings from "../localization";
 import Config, { defaultMeetJitsiUrl } from "../models/Config";
 import { getJitsiUrl } from "./URLHelper";

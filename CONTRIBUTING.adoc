@@ -154,6 +154,12 @@ In order to ensure that anyone can use the add-in, it is important that all gene
 == License Guidelines
 * The repository uses the MIT license. This means that anyone can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software without restriction, provided that the original copyright notice and license are included.
 * Any imported libraries should also have licenses that are compatible with the MIT license.
+* The project follows the https://reuse.software/[REUSE]  specification. When done with additions in your Pull Request, a simple way to lint the project is by running a REUSE-lint: 
+
+[source,shell]
+----
+$ docker run --rm --volume $(pwd):/data fsfe/reuse lint
+----
 
 [[asset-guidelines]]
 == Assets Guidelines
