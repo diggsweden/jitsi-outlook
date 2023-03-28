@@ -73,9 +73,10 @@ A practical example of such a workflow could be:
 3. Push your changes to the topic branch (in your fork) of the repository, i.e `enhancement/10-my-feature-branch`.
 4. Create the relevant tests. See the link:#testing-guidelines[Testing Guidelines].
 5. Open a new pull request to main project.
-6. Verify that all tests are passing.
-7. Project maintainers might comment and give feedback on your Pull Request.
-8. Approved PRs are merged, and the branch is deleted.
+6. Mention the fixed issues in the Pull Request description.
+7. Verify that all tests are passing.
+8. Project maintainers might comment and give feedback on your Pull Request.
+9. Approved PRs are merged, and the branch is deleted.
 
 [[commit-guidelines]]
 == Commit Guidelines
@@ -118,14 +119,15 @@ It requires that you have a GPG keypair set up, see https://docs.github.com/en/g
 Aim for a clear human readable commit history:
 
 * **_Does the project have a defined commit message practice, please follow that_**. 
-* When making a commit related to an issue, it's recommended to include the issue number in the commit message for easy traceability. The format of the commit message can be `#{issue number}: Commit message`, such as `#10: Added test for string concatenation`. By following this convention, it will be easier to track the changes made to a specific issue, especially when the branch is merged. Note that the # is required in order to create the link between the commit message and issue.
+* When making a commit related to an issue, it's recommended to include the issue number in the commit message for easy traceability. The format of the commit message can be `{issue number}: Commit message`, such as `10: Added test for string concatenation`. By following this convention, it will be easier to track the changes made to a specific issue, especially when the branch is merged.
+
 * Make sure you link:#dco-signoff-and-signing-a-commitsign-off[Sign-Off] your commits.
 * In general
     ** Make commits of logical units.
     ** Your commit messages should tell a human reader what will it do when the commit is applied.
     ** Make your commit message/s easily human readable in an expected way: +
         *** A Conventional Commit example: +
-        _#10: add a null pointer check to MyMethod parameter_ +
+        _10: add a null pointer check to MyMethod parameter_ +
         Would be read as 'When this fix is applied it will add a null pointer check to MyMethod parameter'
 
 [[testing-guidelines]]

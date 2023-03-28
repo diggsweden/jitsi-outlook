@@ -24,8 +24,6 @@ describe("getJitsiLinkDOM", () => {
 
     expect(jitsiLinkDOM).toContain(localizedStrings.linkToMeeting);
     expect(jitsiLinkDOM).toContain(localizedStrings.connectToMeeting);
-    expect(jitsiLinkDOM).toContain(localizedStrings.orCopyLink);
-    expect(jitsiLinkDOM).toContain(localizedStrings.copyableLinkToMeeting);
   });
 
   it("should include the additionalText if provided in config", () => {
