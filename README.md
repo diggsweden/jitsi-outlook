@@ -29,6 +29,18 @@ See [Development](#development) for how you can run and test the project locally
 
 This project does not provide a hosting or publishing recommendation, that is entirely up to the individual(s) using it. Microsoft provides a comprehensive publishing guide and provides different options in the following [link](https://learn.microsoft.com/en-us/office/dev/add-ins/publish/publish).
 
+### **Supported Outlook Versions**
+
+The add-in works on the following Outlook versions:
+
+- Outlook 2016 or later, on Windows
+- Outlook 2016 or later, on Mac
+- Outlook on the Web
+- Outlook on Windows (Microsoft 365)
+- Outlook on Mac (Microsoft 365)
+
+\*This add-in does not work in the mobile app.
+
 ## Known issues
 
 This project is a stripped down version with basic functionality. There are ideas and possible plans for the future.
