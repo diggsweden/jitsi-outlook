@@ -6,8 +6,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Jitsi"/>
   <Description DefaultValue="A Jitsi Add-in to easily add a Jitsi meeting instance to an appointment.">
-    <Override Locale="sv_SE" Value="En Jitsi Add-in som gör det enkelt att tilldela ett Jitsi-möte till din mötesinbjudan." />
-    <Override Locale="de_DE" Value="Ein Jitsi-Add-In zum einfachen Hinzufügen einer Jitsi-Meeting-Instanz zu einem Termin." />
+    <Override Locale="sv-SE" Value="En Jitsi Add-in som gör det enkelt att tilldela ett Jitsi-möte till din mötesinbjudan." />
+    <Override Locale="de-DE" Value="Ein Jitsi-Add-In zum einfachen Hinzufügen einer Jitsi-Meeting-Instanz zu einem Termin." />
   </Description>
   <IconUrl DefaultValue="{PROJECT_BASE_URL}/assets/icon-64.png"/> 
   <HighResolutionIconUrl DefaultValue="{PROJECT_BASE_URL}/assets/logo-filled.png"/>
@@ -80,18 +80,18 @@
     <bt:ShortStrings>
         <bt:String id="Label" DefaultValue="Jitsi"/>
         <bt:String id="FunctionButton.Label" DefaultValue="Create Jitsi link">
-            <bt:Override Locale="sv_SE" Value="Skapa Jitsi-länk" />
-            <bt:Override Locale="de_DE" Value="Jitsi-Link erstellen" />
+            <bt:Override Locale="sv-SE" Value="Skapa Jitsi-länk" />
+            <bt:Override Locale="de-DE" Value="Jitsi-Link erstellen" />
         </bt:String>
         <bt:String id="FunctionButton.Title" DefaultValue="Create Jitsi link">
-            <bt:Override Locale="sv_SE" Value="Skapa Jitsi-länk" />
-            <bt:Override Locale="de_DE" Value="Jitsi-Link erstellen" />
+            <bt:Override Locale="sv-SE" Value="Skapa Jitsi-länk" />
+            <bt:Override Locale="de-DE" Value="Jitsi-Link erstellen" />
         </bt:String>
     </bt:ShortStrings>
     <bt:LongStrings>
         <bt:String id="FunctionButton.Tooltip" DefaultValue="Creates and pastes a Jitsi link into your meeting invite.">
-            <bt:Override Locale="sv_SE" Value="Skapar och klistrar in en Jitsi-länk i din mötesinbjudan." />
-            <bt:Override Locale="de_DE" Value="Erstellt einen Jitsi-Link und fügt ihn in Ihre Besprechungseinladung ein." />
+            <bt:Override Locale="sv-SE" Value="Skapar och klistrar in en Jitsi-länk i din mötesinbjudan." />
+            <bt:Override Locale="de-DE" Value="Erstellt einen Jitsi-Link und fügt ihn in Ihre Besprechungseinladung ein." />
         </bt:String>
     </bt:LongStrings>
     </Resources>
