@@ -10,12 +10,12 @@ interface LocalizedStrings {
 const getLocalizedStrings = (): LocalizedStrings => {
   const myLanguage = typeof Office !== "undefined" ? Office.context.displayLanguage : "en";
 
-  if (myLanguage.includes("sv")) {
+  if (/sv/.test(myLanguage)) {
     return {
       connectToMeeting: "Anslut till mötet",
       linkToMeeting: "Länk till mötet",
     };
-  } else if (myLanguage.includes("de")) {
+  } else if (/de/.test(myLanguage)) {
     return {
       connectToMeeting: "Verbinden",
       linkToMeeting: "Link zum Treffen",

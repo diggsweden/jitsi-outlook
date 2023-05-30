@@ -141,7 +141,7 @@ Testing is an important part of the software development process, and should be 
 === Manual Testing
 
 * Conduct Manual Testing on PC, MacOS, and Web: Manual testing involves manually executing your application and verifying its behavior.
-* Make sure that the project works on the intended version of Outlook. The add-in should work on Outlook 2016 and later.
+* Make sure that the project works on the intended version of Outlook. The add-in should work on Outlook 2016 and later. You can test on different versions of Outlook with the https://www.microsoft.com/en-us/download/details.aspx?id=49117[Office Deployment Tool].
 
 [[ux-guidelines]]
 == UX Guidelines
