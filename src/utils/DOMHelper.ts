@@ -27,7 +27,8 @@ export const combineBodyWithJitsiDiv = (body: string, config: Config): string =>
 
 export const bodyHasJitsiLink = (body: string, config: Config): boolean => {
   const baseUrl = config.baseUrl ?? defaultMeetJitsiUrl;
-  return body.includes(baseUrl);
+  const urlRegex = new RegExp(baseUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  return urlRegex.test(body);
 };
 
 export const overwriteJitsiLinkDiv = (body: Document, config: Config): string => {
