@@ -11,6 +11,11 @@ interface Config {
     startWithAudioMuted?: boolean;
     startWithVideoMuted?: boolean;
   };
+  jwt?: {
+    iss: string;
+    key: string;
+    exp?: number;
+  };
 }
 
 export default Config;

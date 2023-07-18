@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 import Config, { defaultMeetJitsiUrl } from "../src/models/Config";
-import { getRandomRoomName, getConfigUrl, getJitsiUrl } from "../src/utils/URLHelper";
+import { getRandomRoomName, getConfigUrl, getJitsiUrl, getJwtToken } from "../src/utils/URLHelper";
 
 describe("getRandomRoomName", () => {
   it("should return a string of length 16", () => {
@@ -57,5 +57,20 @@ describe("getJitsiUrl", () => {
     const jitsiUrl = getJitsiUrl(config);
     expect(jitsiUrl).toContain(config.baseUrl);
     expect(jitsiUrl).toContain(getConfigUrl(config));
+  });
+});
+
+describe("getJwtToken", () => {
+  it("should add jwt to URL if config.jwt is provided", () => {
+    const config: Config = {
+      jwt: {
+        iss: "my-app-id",
+        key: "my-app-secret",
+      },
+    };
+    const jitsiUrl = getJitsiUrl(config);
+    const roomName = new URL(jitsiUrl).pathname.substring(1);
+    const jwtToken = getJwtToken(roomName, config);
+    expect(jitsiUrl).toContain(jwtToken);
   });
 });
