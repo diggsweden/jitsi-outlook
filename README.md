@@ -104,7 +104,7 @@ All of the properties listed below can also be added to enable/disable any extra
 | `startWithVideoMuted` | boolean  | This forces the camera to be disabled for every person entering the meeting.      |
 | `disableInitialGUM`   | boolean  | Skips the initial permission check and configuration screen (GUM = getUserMedia). |
 | `iss`                 | string   | JWT issuer.                                                                       |
-| `key`                 | string   | JWT secret key.                                                                   |
+| `key`                 | string   | JWT key.                                                                          |
 | `exp`                 | number   | JWT valid time in seconds.                                                        |
 
 > Note that configuration is entirely optional and that Jitsi's default configuration will be used as a default if no configuration file is found in the project. The add-in will default to https://meet.jit.si if no configuration file is found.
