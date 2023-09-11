@@ -58,6 +58,11 @@ Great, however, there are some practical points to check to make sure that every
  they are submitted under the same terms as the project licenses. In a more formal way - 'Unless You explicitly state otherwise, any Contribution intentionally submitted for inclusion in the Work by You to the Licensor shall be under the terms and conditions of the projects License, without any additional terms or conditions.'
 * link:#signoff-and-signing-a-commit[Sign your commits].
 
+[[standard-for-public-code]]
+=== Standard for Public Code
+This project aims to comply to the principles outlined in the Standard for Public Code. The standard consists of a set of criteria that both the project itself and all contributions must align with. It is important to note that the standard is currently being worked on. The documentation is accessible via the following link: https://standard.publiccode.net/.
+
+
 [[pull-request]]
 == Pull Request Lifecycle
 
