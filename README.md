@@ -91,7 +91,7 @@ The add-in can be configured through the use of a configuration file (named `con
 ```
 {
     "baseUrl": "https://my-jitsi-instance-url",
-    "additionalText": "Some additional text beneath the signature",
+    "additionalText": "Some additional text beneath the signature"
 }
 ```
 
