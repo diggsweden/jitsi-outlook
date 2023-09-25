@@ -20,6 +20,11 @@ const getLocalizedStrings = (): LocalizedStrings => {
       connectToMeeting: "Verbinden",
       linkToMeeting: "Link zum Treffen",
     };
+  } else if (/nl/.test(myLanguage)) {
+    return {
+      connectToMeeting: "Verbinden met vergadering",
+      linkToMeeting: "Link naar vergadering",
+    };
   } else {
     // Default to english
     return {
