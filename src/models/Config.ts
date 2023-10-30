@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 export const defaultMeetJitsiUrl = "https://meet.jit.si/";
+export const defaultFontFamily = "Arial";
 
 interface Config {
   baseUrl?: string;
@@ -11,6 +12,7 @@ interface Config {
     startWithAudioMuted?: boolean;
     startWithVideoMuted?: boolean;
   };
+  fontFamily?: string;
 }
 
 export default Config;
