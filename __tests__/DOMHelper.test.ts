@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 import getLocalizedStrings from "../src/localization";
-import Config from "../src/models/Config";
+import Config, { defaultFontFamily } from "../src/models/Config";
 import { bodyHasJitsiLink, getJitsiLinkDiv, overwriteJitsiLinkDiv } from "../src/utils/DOMHelper";
 import * as URLHelper from "../src/utils/URLHelper";
 
@@ -42,6 +42,25 @@ describe("getJitsiLinkDOM", () => {
     const jitsiLinkDOM = getJitsiLinkDiv(jitsiUrl, config);
 
     expect(jitsiLinkDOM).not.toContain("additionalText");
+  });
+
+  it("should include the specified font if fontFamily is provided in config", () => {
+    const config: Config = {
+      fontFamily: "Times New Roman",
+    };
+    const jitsiUrl = URLHelper.getJitsiUrl(config);
+    const jitsiLinkDOM = getJitsiLinkDiv(jitsiUrl, config);
+
+    expect(jitsiLinkDOM).toContain(config.fontFamily);
+    expect(jitsiLinkDOM).not.toContain(defaultFontFamily);
+  });
+
+  it("should include the default font if fontFamily is not provided in config", () => {
+    const config: Config = {};
+    const jitsiUrl = URLHelper.getJitsiUrl(config);
+    const jitsiLinkDOM = getJitsiLinkDiv(jitsiUrl, config);
+
+    expect(jitsiLinkDOM).toContain(defaultFontFamily);
   });
 });
 
