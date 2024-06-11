@@ -26,6 +26,30 @@ export const getConfigUrl = (config: Config): string => {
   return url;
 };
 
-export const getJitsiUrl = (config: Config): string => {
-  return (config.baseUrl ?? defaultMeetJitsiUrl) + getRandomRoomName() + getConfigUrl(config);
+export const secureSubjectUrl = (string: string, length?: number): string => {
+  if (length === undefined) {
+    length = 30;
+  }
+  let subject: string = string;
+  subject = subject.replace(/[áàäâãåÁÀÄÂÃÅ]/g, "a");
+  subject = subject.replace(/[óòöôõÓÒÖÔÕ]/g, "o");
+  subject = subject.replace(/[éèëêÉÈËÊ]/g, "e");
+  subject = subject.replace(/[úùüûÚÙÜÛ]/g, "u");
+  subject = subject.replace(/[íìïîÍÌÏÎ]/g, "i");
+  subject = subject.replace(/[^A-Za-z0-9]/g, "-");
+  subject = subject.replace(/--+/g, "-");
+  subject = subject.slice(0, length);
+  if (subject.length <= 1) {
+    subject = "";
+  } else {
+    subject = subject + "_";
+  }
+  return subject;
+};
+
+export const getJitsiUrl = (config: Config, subject?: string): string => {
+  if (subject !== undefined) {
+    subject = secureSubjectUrl(subject);
+  }
+  return (config.baseUrl ?? defaultMeetJitsiUrl) + subject + getRandomRoomName() + getConfigUrl(config);
 };

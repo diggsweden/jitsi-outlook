@@ -62,6 +62,46 @@ describe("getJitsiLinkDOM", () => {
 
     expect(jitsiLinkDOM).toContain(defaultFontFamily);
   });
+
+  it("should return a room containing subject line", () => {
+    const config: Config = {}
+    const testSubject: string = 'Test Meeting:;for +?"!new¤%€${€$[{]£$@£$£employee.,-.-...,,,,.-.-,.---.-,,.,._++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++';
+    const JitsiMeetingUrlProperties: string = URLHelper.getJitsiUrl(config, testSubject);
+    expect(JitsiMeetingUrlProperties).toContain("Test-Meeting-for-new-employee-");
+  });
+
+  it("should return a room containing subject line", () => {
+    const config: Config = {}
+    const testSubject: string = 'Möte angående:;nästa +?"!sprint¤%€${€$[{]£$@£$£.,-.-...,,,,.-.-,.---.-,,.,._++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++';
+    const JitsiMeetingUrlProperties: string = URLHelper.getJitsiUrl(config, testSubject);
+    expect(JitsiMeetingUrlProperties).toContain("Mote-angaende-nasta-sprint-");
+  });
+
+  it("should return a room containing only meeting id", () => {
+    const config: Config = {}
+    const testSubject: string = '';
+    const secureSubjectUrl: string = URLHelper.secureSubjectUrl(testSubject);
+    expect(secureSubjectUrl).toContain("");
+  });
+
+  it("should return a room containing only 30 characters", () => {
+    const config: Config = {}
+    const testSubject: string = 'Möte angående nästa sprint sen i fredags';
+    const secureSubjectUrl: string = URLHelper.secureSubjectUrl(testSubject);
+    expect(secureSubjectUrl).toHaveLength(31)
+  });
+
+  it("Should return empty string", () => {
+    const testSubject: string = ':; +?"!¤%€${€$[{]£$@£$£.,-.-...,,,,.-.-,.---.-,,.,._++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++';
+    const secureSubjectUrl: string = URLHelper.secureSubjectUrl(testSubject);
+    expect(secureSubjectUrl).toEqual("");
+  });
+
+  it("Should return -a-_ where - is collection of unsupported chars", () => {
+    const testSubject: string = ':a; +?"!¤%€${€$[{]£$@£$£.,-.-...,,,,.-.-,.---.-,,.,._++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++';
+    const secureSubjectUrl: string = URLHelper.secureSubjectUrl(testSubject);
+    expect(secureSubjectUrl).toEqual("-a-_");
+  });
 });
 
 describe("bodyHasJitsiLink", () => {
