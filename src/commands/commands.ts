@@ -34,7 +34,7 @@ const addJitsiLink = (event: Office.AddinCommands.Event) => {
       const parser = new DOMParser();
       const htmlDoc = parser.parseFromString(result.value, "text/html");
       const bodyDOM = bodyHasJitsiLink(result.value, config) ? overwriteJitsiLinkDiv(htmlDoc, config) : combineBodyWithJitsiDiv(result.value, config);
-      setData(bodyDOM, event);
+      setData(htmlDoc.head.innerHTML + bodyDOM, event);
     } catch (error) {
       // If it fails to manipulate the DOM with a new link it will fallback to its original state
       setData(result.value, event);
