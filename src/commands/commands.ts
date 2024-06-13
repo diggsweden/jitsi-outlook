@@ -4,42 +4,17 @@
 
 import configJson from "../../config.json";
 import Config from "../models/Config";
-import { bodyHasJitsiLink, combineBodyWithJitsiDiv, overwriteJitsiLinkDiv } from "../utils/DOMHelper";
+import { addMeeting } from "../utils/OfficeCallHandler";
 
-/* global global, Office, self, window */
+/* global Office */
 
-Office.initialize = function () {};
-
-const setData = (str: string, event: Office.AddinCommands.Event) => {
-  Office.context.mailbox.item.body.setAsync(
-    str,
-    {
-      coercionType: Office.CoercionType.Html,
-    },
-    () => {
-      event.completed();
-    }
-  );
-};
+(async () => {
+  await Office.onReady();
+})();
 
 const addJitsiLink = (event: Office.AddinCommands.Event) => {
   const config = configJson as Config;
-
-  Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
-    if (result.error) {
-      event.completed();
-    }
-
-    try {
-      const parser = new DOMParser();
-      const htmlDoc = parser.parseFromString(result.value, "text/html");
-      const bodyDOM = bodyHasJitsiLink(result.value, config) ? overwriteJitsiLinkDiv(htmlDoc, config) : combineBodyWithJitsiDiv(result.value, config);
-      setData(bodyDOM, event);
-    } catch (error) {
-      // If it fails to manipulate the DOM with a new link it will fallback to its original state
-      setData(result.value, event);
-    }
-  });
+  addMeeting(config, event);
 };
 
 Office.actions.associate("insertJitsiLink", addJitsiLink);

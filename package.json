@@ -33,7 +33,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "regenerator-runtime": "^0.13.7",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -64,6 +65,7 @@
     "office-addin-dev-certs": "^1.8.0",
     "office-addin-lint": "^2.1.0",
     "office-addin-manifest": "^1.9.0",
+    "office-addin-mock": "^2.4.2",
     "office-addin-prettier-config": "^1.2.0",
     "os-browserify": "^0.3.0",
     "process": "^0.11.10",
@@ -83,8 +85,5 @@
   },
   "browserslist": [
     "ie 11"
-  ],
-  "jest": {
-    "testEnvironment": "jsdom"
-  }
+  ]
 }

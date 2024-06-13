@@ -7,6 +7,7 @@ export const defaultFontFamily = "Arial";
 
 interface Config {
   baseUrl?: string;
+  locationString?: string;
   additionalText?: string;
   meetingUrl?: {
     startWithAudioMuted?: boolean;
