@@ -31,10 +31,12 @@ const addJitsiLink = (event: Office.AddinCommands.Event) => {
     }
 
     try {
-      const parser = new DOMParser();
-      const htmlDoc = parser.parseFromString(result.value, "text/html");
-      const bodyDOM = bodyHasJitsiLink(result.value, config) ? overwriteJitsiLinkDiv(htmlDoc, config) : combineBodyWithJitsiDiv(result.value, config);
-      setData(htmlDoc.head.innerHTML + bodyDOM, event);
+      Office.context.mailbox.item.subject.getAsync((subject) => {
+        const parser = new DOMParser();
+        const htmlDoc = parser.parseFromString(result.value, "text/html");
+        const bodyDOM = bodyHasJitsiLink(result.value, config) ? overwriteJitsiLinkDiv(htmlDoc, config, subject.value) : combineBodyWithJitsiDiv(result.value, config, subject.value);
+        setData(htmlDoc.head.innerHTML + bodyDOM, event);
+      });
     } catch (error) {
       // If it fails to manipulate the DOM with a new link it will fallback to its original state
       setData(result.value, event);
