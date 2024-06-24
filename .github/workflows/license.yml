@@ -11,4 +11,4 @@ jobs:
         with:
           fetch-depth: 7
       - name: REUSE Compliance Check
-        uses: fsfe/reuse-action@v1
+        uses: fsfe/reuse-action@v3.0.0
