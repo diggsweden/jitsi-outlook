@@ -101,6 +101,7 @@ All of the properties listed below can also be added to enable/disable any extra
 | **Property**          | **Type** | **Description**                                                                   |
 | --------------------- | -------- | --------------------------------------------------------------------------------- |
 | `baseUrl`             | string   | Base url to your Jitsi instance.                                                  |
+| `locationString`      | string   | This text is added to the Location field of the meeting.
 | `additionalText`      | string   | This text will show up at the bottom of the email signature.                      |
 | `fontFamily`          | string   | The font family used for for the signature text (defaulting to Arial)             |
 | `startWithAudioMuted` | boolean  | This forces the mic to be muted for every person entering the meeting.            |

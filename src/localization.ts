@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: MIT
 
+/* global Office */
+
 interface LocalizedStrings {
   connectToMeeting: string;
   linkToMeeting: string;
