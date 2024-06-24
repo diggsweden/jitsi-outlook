@@ -53,11 +53,13 @@ export const addMeeting = async (config: Config, event?: Office.AddinCommands.Ev
     }
 
     try {
-      const parser = new DOMParser();
-      const htmlDoc = parser.parseFromString(result.value, "text/html");
-      const bodyDOM = bodyHasJitsiLink(result.value, config) ? overwriteJitsiLinkDiv(htmlDoc, config) : combineBodyWithJitsiDiv(result.value, config);
-      setData(bodyDOM, event);
-      setLocation(config);
+      Office.context.mailbox.item.subject.getAsync((subject) => {
+        const parser = new DOMParser();
+        const htmlDoc = parser.parseFromString(result.value, "text/html");
+        const bodyDOM = bodyHasJitsiLink(result.value, config) ? overwriteJitsiLinkDiv(htmlDoc, config, subject.value) : combineBodyWithJitsiDiv(result.value, config, subject.value);
+        setData(htmlDoc.head.innerHTML + bodyDOM, event);
+        setLocation(config);
+      });
     } catch (error) {
       // If it fails to manipulate the DOM with a new link it will fallback to its original state
       setData(result.value, event);
